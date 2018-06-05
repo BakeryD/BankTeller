@@ -19,7 +19,9 @@ namespace BankTellerExercise.Classes
 
             if (this.Balance < 150)
 			{
-				this.Balance -= 2;
+                return base.Withdraw(amountToWithdraw+2);
+
+                //this.Balance -= 2;
 
 			}
 			

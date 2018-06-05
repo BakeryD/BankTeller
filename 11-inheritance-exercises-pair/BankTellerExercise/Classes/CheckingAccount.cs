@@ -20,15 +20,17 @@ namespace BankTellerExercise.Classes
                     return this.Balance;
 
                 }
-                this.Balance -= 10;
-				this.Balance -= amountToWithdraw;
 
-               
+               // this.Balance -= 10;
+				//this.Balance -= amountToWithdraw;
+                return base.Withdraw(amountToWithdraw+10);
+
+
             }
 
-			
 
-			return this.Balance;
+
+            return base.Withdraw(amountToWithdraw);
 		}
 
 

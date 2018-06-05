@@ -12,7 +12,7 @@ namespace BankTellerExercise.Classes
 		//properties
 
 		public string AccountNumber { get; set; }
-		public decimal Balance { get; protected set; }
+		public decimal Balance { get; private set; }
 
 
 		//METHODS
