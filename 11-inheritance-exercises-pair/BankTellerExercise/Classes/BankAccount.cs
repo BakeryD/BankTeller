@@ -29,6 +29,7 @@ namespace BankTellerExercise.Classes
 
 		public void Transfer(BankAccount destinationAcount, decimal transferAmount)
 		{
+            this.Balance -= transferAmount;
 			destinationAcount.Balance += transferAmount;
 		}
 

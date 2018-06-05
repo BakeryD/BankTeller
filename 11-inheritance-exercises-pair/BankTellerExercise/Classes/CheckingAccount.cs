@@ -14,16 +14,19 @@ namespace BankTellerExercise.Classes
 		{
 			if (this.Balance - amountToWithdraw < 0)
 			{
-				this.Balance -= 10;
-				this.Balance -= amountToWithdraw;
-			}
+                if (this.Balance - amountToWithdraw < -90)
+                {
+                    Console.WriteLine("You are totaly broke");
+                    return this.Balance;
 
-			if (this.Balance - amountToWithdraw < -90)
-			{
-				Console.WriteLine("You Broke");
-				return this.Balance;
-				
-			}
+                }
+                this.Balance -= 10;
+				this.Balance -= amountToWithdraw;
+
+               
+            }
+
+			
 
 			return this.Balance;
 		}
