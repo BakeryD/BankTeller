@@ -88,7 +88,8 @@ namespace BankTellerExercise
                         yourAccount.Transfer(transferAcct, tranferNum);
                         Console.WriteLine($"{transfersName} was transferred {tranferNum}. Their account now holds ${transferAcct.Balance}");
 
-                        //Need to make a 2nd bank account to see if the transfer worked
+                        //would need a dictionary to hold the different accounts you can transfer to 
+
                         break;
 
                     case 5:
