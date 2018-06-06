@@ -17,7 +17,7 @@ namespace EmployeePayroll
 			int totalHours = 0;
 
 			//total pay
-
+			
 			double totalPay = 0;
 
 			//employee List
@@ -26,30 +26,30 @@ namespace EmployeePayroll
 			employees.Add(new SalaryWorker(10000, "Greg", "Stevenson"));
 			employees.Add(new HourlyWorker(10.00, "Dan", "Higgles"));
 			employees.Add(new VolunteerWorker("last", "first"));
-			
+			Console.WriteLine("{0,10}{1,15}{2,10}", "Employee", "Hours", "Pay");
+
 			foreach (var person in employees)
 			{
 				
 				int hours = rnd.Next(40, 60);
 
-
-
-				Console.WriteLine("{0,10}{1,10}{2,10}", "Employee", "Hours", "Pay");
-
-				Console.WriteLine($"{person.LastName}, {person.FirstName}     {hours}        {person.CalculateWeeklyPay(hours)}");
+				Console.WriteLine( $"{person.LastName,10}," + $"{person.FirstName, 5}" + $"{hours, 10}" + $"{person.CalculateWeeklyPay(hours), 10}");
 				
 				//total hours calculation
 				totalHours += hours;
-				Console.WriteLine($"{totalHours}");
+				
 
 				//total pay
 
 				totalPay += person.CalculateWeeklyPay(hours);
-				Console.WriteLine($"{totalPay}");
+				
 			}
-
-
-        }
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine($"Total Hours Worked: {totalHours}");
+			Console.WriteLine($"Total pay: {totalPay}");
+			
+		}
 
     }
 }
