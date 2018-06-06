@@ -12,13 +12,13 @@ namespace BankTellerExercise
         static void Main(string[] args)
         {
             bool leave = false;
-            Console.WriteLine("Welcome to the bank!");
+            Console.WriteLine("Welcome to the virtual bank!");
             Console.WriteLine();
             Console.Write("Would you like a (C)hecking or a (S)avings account?:   ");
             var choice = Console.ReadLine();
-            BankAccount yourAccount= new BankAccount();
+            BankAccount yourAccount = new BankAccount();
             choice = choice.ToUpper();
-            if (choice=="C")
+            if (choice == "C")
             {
                 Console.Write("What is the name of the checking account?:  ");
                 string name = Console.ReadLine();
@@ -34,65 +34,99 @@ namespace BankTellerExercise
             {
                 Console.Write("What is the name of the savings account?:  ");
                 string name = Console.ReadLine();
-                yourAccount = new SavingsAccount
+                yourAccount = new SavingsAccount()
                 {
                     AccountNumber = name
                 };
 
 
             }
-            
+            Console.Clear();
+
             while (!leave)
             {
+                Console.WriteLine("______________________________________");
+                Console.WriteLine();
                 Console.WriteLine("What would you like to do today?");
                 Console.WriteLine("1. Check your Balance");        //Check Balance
                 Console.WriteLine("2. Withdraw money");        //Withdraw
                 Console.WriteLine("3. Deposit money");        //Deposit
-                Console.WriteLine("4.Transfer money to another account");        //Transfer
-                Console.WriteLine("5. Quit");        //Quit
-                var menuChoice = int.Parse(Console.ReadLine());
+                Console.WriteLine("4. Transfer money to another account");        //Transfer
+                Console.WriteLine("5. Switch Accounts");    //Unhandled case
+                Console.WriteLine("6. Quit");        //Quit
+
+                var menuChoice = decimal.Parse(Console.ReadLine());
 
                 switch (menuChoice)
                 {
                     case 1:
-                        Console.WriteLine($"Your balance in account: {yourAccount.AccountNumber}  is ${yourAccount.Balance}");
+                        Console.WriteLine($"Your balance in account: {yourAccount.AccountNumber} is ${yourAccount.Balance}");
                         Console.WriteLine();
+
                         break;
 
 
                     case 2:
                         Console.WriteLine("How much would you like to withdraw? ");
                         Console.WriteLine();
-                        int withdraw = int.Parse(Console.ReadLine());
+                        decimal withdraw = decimal.Parse(Console.ReadLine());
                         yourAccount.Withdraw(withdraw);
+                        Console.WriteLine($"Your balance is ${yourAccount.Balance}");
+                        Console.WriteLine();
+
                         break;
 
 
                     case 3:
                         Console.WriteLine("How much would you like to deposit? ");
                         Console.WriteLine();
-                        int deposit = int.Parse(Console.ReadLine());
+                        var deposit = decimal.Parse(Console.ReadLine());
                         yourAccount.Deposit(deposit);
+                        Console.WriteLine($"Your balance is ${yourAccount.Balance}");
+                        Console.WriteLine();
                         break;
 
 
                     case 4:
-                        Console.WriteLine("Who would you like to transfer to? ");
+                        Console.Write("Who would you like to transfer to?: ");
                         string transfersName = Console.ReadLine();
-                        Console.WriteLine("How much?");
-                        var tranferNum = int.Parse(Console.ReadLine());
+                        Console.Write("How much?:  ");
+                        var tranferNum = decimal.Parse(Console.ReadLine());
                         BankAccount transferAcct = new BankAccount
                         {
                             AccountNumber = transfersName
                         };
                         yourAccount.Transfer(transferAcct, tranferNum);
                         Console.WriteLine($"{transfersName} was transferred {tranferNum}. Their account now holds ${transferAcct.Balance}");
+                        Console.WriteLine($"Your balance is ${yourAccount.Balance}");
+
 
                         //Need to make a 2nd bank account to see if the transfer worked
                         break;
 
+
+
                     case 5:
-                        Console.WriteLine("want to leave to bank?  (Y/N)");
+                        if (yourAccount is CheckingAccount)
+                        {
+                             
+
+                            yourAccount = new SavingsAccount(yourAccount);
+                        }
+                        else
+                        {
+                            yourAccount = new CheckingAccount(yourAccount);
+                        }
+                        //Console.WriteLine("FIX ME!!!!");
+                        //Console.WriteLine("FIX ME!!!!");
+                        //Console.WriteLine("FIX ME!!!!");
+                        Console.WriteLine($"Your account is a {yourAccount.GetType()}");
+
+
+                        break;
+
+                    case 6:
+                        Console.WriteLine("Do you want to leave the bank?  (Y/N)");
                         Console.WriteLine();
                         var quit = Console.ReadLine();
                         quit = quit.ToUpper();
@@ -100,21 +134,23 @@ namespace BankTellerExercise
                         {
                             Console.WriteLine("Leaving Bank ... ");
                             System.Threading.Thread.Sleep(1500);
-                            Console.Beep(3007, 300);
-                            Console.Beep(3007, 300);
+                            Console.Beep(3007, 120);
+                            Console.Beep(3007, 120);
+
+                           // Console.Beep(2600, 100);
 
                             Console.WriteLine("Bye-Bye!");
                             leave = true;
                             break;
-                           
+
                         }
                         else
                         {
                             break;
                         }
 
-                        
-           
+
+
 
 
                 }
