@@ -29,5 +29,16 @@ namespace BankTellerExercise.Classes
 			return base.Withdraw(amountToWithdraw);
 		}
 
+        //Constructor
+        public SavingsAccount()
+        {
+
+        }
+        public SavingsAccount(BankAccount bankAccount)
+        {
+
+           
+        }
+
 	}
 }
