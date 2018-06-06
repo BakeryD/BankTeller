@@ -10,29 +10,42 @@ namespace EmployeePayroll
     public class Program
     {
         static void Main(string[] args)
-        {
+        {	//hours 
+			Random rnd = new Random();
+
+			//total hours worked
+			int totalHours = 0;
+
+			//total pay
+
+			double totalPay = 0;
+
+			//employee List
 			List<IWorker> employees = new List<IWorker>();
 
-			var greg = new SalaryWorker(10000, "Greg", "Stevenson");
-			int hours = 40;
-			greg.CalculateWeeklyPay(hours);
-			employees.Add(greg);
-
-			var dan = new HourlyWorker(10.00, "Dan", "Higgles");
-			hours = 50;
-			dan.CalculateWeeklyPay(hours);
-			employees.Add(dan);
-
-			var last = new VolunteerWorker("last", "first");
-			hours = 20;
-			last.CalculateWeeklyPay(hours);
-			employees.Add(last);
+			employees.Add(new SalaryWorker(10000, "Greg", "Stevenson"));
+			employees.Add(new HourlyWorker(10.00, "Dan", "Higgles"));
+			employees.Add(new VolunteerWorker("last", "first"));
 			
 			foreach (var person in employees)
 			{
+				
+				int hours = rnd.Next(40, 60);
+
+
+
 				Console.WriteLine("{0,10}{1,10}{2,10}", "Employee", "Hours", "Pay");
 
-				Console.WriteLine($"{person.LastName}, {person.FirstName}         {hours}             {person.CalculateWeeklyPay(hours)}");
+				Console.WriteLine($"{person.LastName}, {person.FirstName}     {hours}        {person.CalculateWeeklyPay(hours)}");
+				
+				//total hours calculation
+				totalHours += hours;
+				Console.WriteLine($"{totalHours}");
+
+				//total pay
+
+				totalPay += person.CalculateWeeklyPay(hours);
+				Console.WriteLine($"{totalPay}");
 			}
 
 
