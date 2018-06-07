@@ -70,8 +70,7 @@ namespace BankTellerExercise
                 Console.WriteLine("3. Deposit money");        //Deposit
                 Console.WriteLine("4. Transfer money to another account");        //Transfer
                 Console.WriteLine("5. Open another account");
-                Console.WriteLine("6. Switch Accounts");    //Unhandled case
-                Console.WriteLine("7. Quit");        //Quit
+                Console.WriteLine("6. Quit");        //Quit
 
                 var menuChoice = decimal.Parse(Console.ReadLine());
 
@@ -141,9 +140,9 @@ namespace BankTellerExercise
                                 Console.WriteLine("How Much?   ");
                                 decimal deposit = decimal.Parse(Console.ReadLine());
                                 you.Accounts[i].Deposit(deposit);
-
+								break;
                             }
-                            else if (i == you.Accounts.Length - 1)
+							if (i == you.Accounts.Length - 1)
                             {
                                 Console.WriteLine("You do not have that account...");
                             }
@@ -279,33 +278,7 @@ namespace BankTellerExercise
 
                         break;
 
-
                     case 6:
-
-
-                        if (yourAccount is CheckingAccount)
-                        {
-                            var newAccount = new SavingsAccount();
-                            yourAccount.Transfer(newAccount, yourAccount.Balance);
-
-                            yourAccount = newAccount;
-                        }
-                        else
-                        {
-                            var newAccount = new CheckingAccount();
-                            yourAccount.Transfer(newAccount, yourAccount.Balance);
-
-                            yourAccount = newAccount;
-                        }
-                        //Console.WriteLine("FIX ME!!!!");
-                        //Console.WriteLine("FIX ME!!!!");
-                        //Console.WriteLine("FIX ME!!!!");
-                        Console.WriteLine($"Your account is a {yourAccount.GetType()}");
-
-
-                        break;
-
-                    case 7:
                         Console.WriteLine("Do you want to leave the bank?  (Y/N)");
                         Console.WriteLine();
                         var quit = Console.ReadLine();
