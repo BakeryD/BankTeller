@@ -6,35 +6,39 @@ using System.Threading.Tasks;
 
 namespace EmployeePayroll.Classes
 {
-	public class HourlyWorker : IWorker
-	{
-		//Properties
+    public class HourlyWorker : IWorker
+    {
+        //Properties
 
-		public double HourlyRate { get; }
+        public double HourlyRate { get; }
 
-		//Cosntructor
+        //Cosntructor
 
-		public HourlyWorker(double hourlyRate, string firstName, string lastName)
-		{
-			this.HourlyRate = hourlyRate;
-			this.FirstName = firstName;
-			this.LastName = lastName;
-		}
+        public HourlyWorker(double hourlyRate, string firstName, string lastName)
+        {
+            this.HourlyRate = hourlyRate;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
 
-		//Interface Code
-		public string FirstName  { get; }
+        //Interface Code
+        public string FirstName { get; }
 
-		public string LastName { get; }
+        public string LastName { get; }
 
-		public double CalculateWeeklyPay(int hoursWorked)
-		{
-			double pay = HourlyRate * hoursWorked;
+        public double CalculateWeeklyPay(int hoursWorked)
+        {
+            double pay = HourlyRate * hoursWorked;
 
-			int overtime = hoursWorked - 40;
+            int overtime = hoursWorked - 40;
+            if (overtime > 0)
+            {
+                return pay + (HourlyRate * overtime * .5);
+            }
+            else
+                return pay;
 
-			return pay + (HourlyRate * overtime * .5);
 
-
-		}
-	}
+        }
+    }
 }

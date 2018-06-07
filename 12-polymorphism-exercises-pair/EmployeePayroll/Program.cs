@@ -27,13 +27,14 @@ namespace EmployeePayroll
 			employees.Add(new HourlyWorker(10.00, "Dan", "Higgles"));
 			employees.Add(new VolunteerWorker("last", "first"));
 			Console.WriteLine("{0,10}{1,15}{2,10}", "Employee", "Hours", "Pay");
+            Console.WriteLine();
 
 			foreach (var person in employees)
 			{
 				
 				int hours = rnd.Next(40, 60);
 
-				Console.WriteLine( $"{person.LastName,10}," + $"{person.FirstName, 5}" + $"{hours, 10}" + $"{person.CalculateWeeklyPay(hours), 10}");
+				Console.WriteLine( $"{person.LastName,10}," + $"{person.FirstName, 5}" + $"{hours, 10}" + $"{person.CalculateWeeklyPay(hours).ToString("C2"), 10}");
 				
 				//total hours calculation
 				totalHours += hours;
@@ -47,7 +48,7 @@ namespace EmployeePayroll
 			Console.WriteLine();
 			Console.WriteLine();
 			Console.WriteLine($"Total Hours Worked: {totalHours}");
-			Console.WriteLine($"Total pay: {totalPay}");
+			Console.WriteLine($"Total paid to employees: {totalPay}");
 			
 		}
 
