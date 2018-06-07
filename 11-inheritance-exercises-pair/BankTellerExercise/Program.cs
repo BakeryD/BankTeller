@@ -107,6 +107,7 @@ namespace BankTellerExercise
                                 Console.WriteLine("How Much?   ");
                                 decimal withdraw = decimal.Parse(Console.ReadLine());
                                 you.Accounts[i].Withdraw(withdraw);
+                                break;
 
                             }
 
@@ -141,9 +142,10 @@ namespace BankTellerExercise
                                 Console.WriteLine("How Much?   ");
                                 decimal deposit = decimal.Parse(Console.ReadLine());
                                 you.Accounts[i].Deposit(deposit);
+                                break;
 
                             }
-                            else if (i == you.Accounts.Length - 1)
+                             if (i == you.Accounts.Length - 1)
                             {
                                 Console.WriteLine("You do not have that account...");
                             }
@@ -282,27 +284,32 @@ namespace BankTellerExercise
 
                     case 6:
 
-
-                        if (yourAccount is CheckingAccount)
+                        for (int i = 0; i < 1000; i++)
                         {
-                            var newAccount = new SavingsAccount();
-                            yourAccount.Transfer(newAccount, yourAccount.Balance);
-
-                            yourAccount = newAccount;
+                            Console.WriteLine("DON'T DO IT, IT'S A TRAP");
                         }
-                        else
-                        {
-                            var newAccount = new CheckingAccount();
-                            yourAccount.Transfer(newAccount, yourAccount.Balance);
-
-                            yourAccount = newAccount;
-                        }
-                        //Console.WriteLine("FIX ME!!!!");
-                        //Console.WriteLine("FIX ME!!!!");
-                        //Console.WriteLine("FIX ME!!!!");
-                        Console.WriteLine($"Your account is a {yourAccount.GetType()}");
 
 
+                        // if (yourAccount is CheckingAccount)
+                        // {
+                        //     var newAccount = new SavingsAccount();
+                        //     yourAccount.Transfer(newAccount, yourAccount.Balance);
+                        //
+                        //     yourAccount = newAccount;
+                        // }
+                        // else
+                        // {
+                        //     var newAccount = new CheckingAccount();
+                        //     yourAccount.Transfer(newAccount, yourAccount.Balance);
+                        //
+                        //     yourAccount = newAccount;
+                        // }
+                        // //Console.WriteLine("FIX ME!!!!");
+                        // //Console.WriteLine("FIX ME!!!!");
+                        // //Console.WriteLine("FIX ME!!!!");
+                        // Console.WriteLine($"Your account is a {yourAccount.GetType()}");
+
+                        Console.Clear();
                         break;
 
                     case 7:
