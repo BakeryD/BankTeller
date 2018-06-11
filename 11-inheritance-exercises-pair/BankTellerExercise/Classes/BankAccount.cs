@@ -29,7 +29,7 @@ namespace BankTellerExercise.Classes
 
 		public void Transfer(BankAccount destinationAcount, decimal transferAmount)
 		{
-            if (this.Balance > transferAmount)
+            if (this.Balance >= transferAmount)
             {
                 this.Balance -= transferAmount;
                 destinationAcount.Balance += transferAmount;

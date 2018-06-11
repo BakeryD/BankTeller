@@ -35,6 +35,7 @@ namespace BankTellerExercise.Classes
 		}
         public CheckingAccount(BankAccount bankAccount)
         {
+            var that = bankAccount;
              bankAccount = new CheckingAccount();
         }
         public CheckingAccount() { }
