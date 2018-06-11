@@ -23,7 +23,7 @@ namespace BankTellerExercise.Classes
 
 
                 }
-                if (count > 25000)
+                if (count >= 25000)
                 {
                     return true;
                 }
@@ -51,15 +51,15 @@ namespace BankTellerExercise.Classes
             {
                 newAccount = new CheckingAccount
                 {
-                    AccountNumber = name
+                    AccountNumber = name.ToUpper()
                 };
 
             }
-            else
+            else if(newAccount is SavingsAccount)
             {
                 newAccount = new SavingsAccount
                 {
-                    AccountNumber = name
+                    AccountNumber = name.ToUpper()
                 };
             }
             //newAccount = new BankAccount();

@@ -34,11 +34,11 @@ namespace BankTellerExercise.Classes
         {
 
         }
-        public SavingsAccount(BankAccount bankAccount)
+      /*  public SavingsAccount(BankAccount bankAccount)
         {
 
            
-        }
+        }*/
 
 	}
 }

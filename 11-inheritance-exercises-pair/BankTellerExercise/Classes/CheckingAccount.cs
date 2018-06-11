@@ -16,8 +16,8 @@ namespace BankTellerExercise.Classes
 			{
                 if (this.Balance - amountToWithdraw < -90)
                 {
-                    Console.WriteLine("You are totaly broke.");
-                    Console.WriteLine("You cannot complete that transaction.");
+                    //Console.WriteLine("You are totaly broke.");
+                    //Console.WriteLine("You cannot complete that transaction.");
                     return this.Balance;
 
                 }

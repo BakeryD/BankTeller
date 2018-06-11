@@ -30,7 +30,7 @@ namespace BankTellerExercise
             if (choice == "C")
             {
                 Console.Write("What is the name of the checking account?:  ");
-                string name = Console.ReadLine().ToLower();
+                string name = Console.ReadLine().ToUpper();
                 var newCheck = new CheckingAccount();
 
                 you.AddAccount(newCheck, name);
@@ -46,7 +46,7 @@ namespace BankTellerExercise
             else
             {
                 Console.Write("What is the name of the savings account?:  ");
-                string name = Console.ReadLine().ToLower();
+                string name = Console.ReadLine().ToUpper();
 
                 var newSave = new SavingsAccount();
 
@@ -62,6 +62,8 @@ namespace BankTellerExercise
 
             while (!leave)
             {
+                Console.WriteLine("Welcome to the bank "+yourName+"!");
+
                 Console.WriteLine("______________________________________");
                 Console.WriteLine();
                 Console.WriteLine("What would you like to do today?");
@@ -70,22 +72,28 @@ namespace BankTellerExercise
                 Console.WriteLine("3. Deposit money");        //Deposit
                 Console.WriteLine("4. Transfer money to another account");        //Transfer
                 Console.WriteLine("5. Open another account");
-                Console.WriteLine("6. Switch Accounts");    //Unhandled case
-                Console.WriteLine("7. Quit");        //Quit
+                Console.WriteLine("6. See a list of your accounts");    //List all of your accounts opened
+                Console.WriteLine("7. Check VIP status");
+                Console.WriteLine("8. Quit");        //Quit
 
                 var menuChoice = decimal.Parse(Console.ReadLine());
 
                 switch (menuChoice)
                 {
                     case 1:
-                        Console.Write("What is the name of the account would you like the balance of?   ");
+                        Console.Clear();
 
+                        Console.Write("What is the name of the account would you like the balance of?   ");
+                        Console.WriteLine();
                         string AChoice = Console.ReadLine();
                         foreach (var acct in you.Accounts)
                         {
-                            if (acct.AccountNumber == AChoice.ToLower())
+                            if (acct.AccountNumber == AChoice.ToUpper())
                             {
-                                Console.WriteLine($"Your balance in Account : {acct.AccountNumber} is  ${acct.Balance}");
+                                Console.WriteLine($"Your balance in Account : {acct.AccountNumber} is  {acct.Balance.ToString("C2")}");
+                                Console.WriteLine();
+                                Console.WriteLine();
+                                Console.WriteLine();
                                 break;
                             }
 
@@ -98,15 +106,20 @@ namespace BankTellerExercise
 
 
                     case 2:
+                        Console.Clear();
+
                         Console.WriteLine("Which account would you like to withdaraw from (Name on Account) ?   ");
-                        string wAcct = Console.ReadLine().ToLower();
+                        string wAcct = Console.ReadLine().ToUpper();
                         for (int i = 0; i < you.Accounts.Length; i++)
                         {
                             if (you.Accounts[i].AccountNumber == wAcct)
                             {
-                                Console.WriteLine("How Much?   ");
+                                Console.Write("How Much?   ");
                                 decimal withdraw = decimal.Parse(Console.ReadLine());
                                 you.Accounts[i].Withdraw(withdraw);
+                                Console.WriteLine();
+                                Console.WriteLine();
+                                Console.WriteLine();
                                 break;
 
                             }
@@ -132,22 +145,28 @@ namespace BankTellerExercise
 
                     case 3:
 
-
+                        Console.Clear();
                         Console.WriteLine("Which account would you like to deposit to (Name on Account) ?   ");
-                        string dAcct = Console.ReadLine().ToLower();
+                        string dAcct = Console.ReadLine().ToUpper();
                         for (int i = 0; i < you.Accounts.Length; i++)
                         {
                             if (you.Accounts[i].AccountNumber == dAcct)
                             {
-                                Console.WriteLine("How Much?   ");
+                                Console.Write("How Much?   ");
                                 decimal deposit = decimal.Parse(Console.ReadLine());
                                 you.Accounts[i].Deposit(deposit);
+                                Console.WriteLine();
+                                Console.WriteLine();
+                                Console.WriteLine();
                                 break;
 
                             }
                              if (i == you.Accounts.Length - 1)
                             {
                                 Console.WriteLine("You do not have that account...");
+                                Console.WriteLine();
+                                Console.WriteLine();
+                                Console.WriteLine();
                             }
 
 
@@ -165,6 +184,7 @@ namespace BankTellerExercise
 
 
                     case 4:
+                        Console.Clear();
 
                         bool doesNotExist = true;
 
@@ -172,7 +192,7 @@ namespace BankTellerExercise
                         {
 
                             Console.Write("Which account are you transferring from (Enter Name on account)?  ");
-                           string tFrom = Console.ReadLine().ToLower();
+                           string tFrom = Console.ReadLine().ToUpper();
                             Console.Write("How Much?  ");
                             decimal transAmount = decimal.Parse(Console.ReadLine());
                             
@@ -183,6 +203,9 @@ namespace BankTellerExercise
                                 if (i == you.Accounts.Length - 1 && you.Accounts[i].AccountNumber != tFrom)
                                 {
                                     Console.WriteLine("That account doesnt't exist");
+                                    Console.WriteLine();
+                                    Console.WriteLine();
+                                    Console.WriteLine();
                                     break;
                                 }
                                 else if (you.Accounts[i].AccountNumber == tFrom)
@@ -193,7 +216,7 @@ namespace BankTellerExercise
 
                                         Console.WriteLine();
                                         Console.Write("Which of your accounts are you transferring to (Enter Name on account)?   ");
-                                        string tTo = Console.ReadLine().ToLower();
+                                        string tTo = Console.ReadLine().ToUpper();
 
                                         for (int a = 0; a < you.Accounts.Length; a++)
                                         {
@@ -256,12 +279,14 @@ namespace BankTellerExercise
                         break;
 
                     case 5:
+                        Console.Clear();
+
                         Console.WriteLine("What kind of account would you like to open? (C/S)  ");
-                        string aChoice = Console.ReadLine().ToLower();
-                        if (aChoice == "c")
+                        string aChoice = Console.ReadLine().ToUpper();
+                        if (aChoice == "C")
                         {
                             Console.Write("What is the name of the account?   ");
-                            string aName = Console.ReadLine().ToLower();
+                            string aName = Console.ReadLine().ToUpper();
                             var newCheck = new CheckingAccount();
                           
                             you.AddAccount(newCheck, aName);
@@ -272,7 +297,7 @@ namespace BankTellerExercise
                         else
                         {
                             Console.Write("What is the name of the account?   ");
-                            string aName = Console.ReadLine().ToLower();
+                            string aName = Console.ReadLine().ToUpper();
                             var newSave = new SavingsAccount();
 
                             you.AddAccount(newSave, aName);
@@ -283,11 +308,35 @@ namespace BankTellerExercise
 
 
                     case 6:
-
-                        for (int i = 0; i < 1000; i++)
+                        //loop through each account in accounts and print the account name, type, and balance
+                        Console.Clear();
+                        Console.WriteLine("Generating General Account Ledger");
+                        Console.WriteLine("...");
+                        Console.WriteLine("...");
+                        Console.WriteLine("...");
+                        Console.WriteLine();
+                        System.Threading.Thread.Sleep(2000);
+                        Console.WriteLine("{0,10}{1,20}{2,18}","Account Name","Type of Account","Balance");
+                        foreach (var account in you.Accounts)
                         {
-                            Console.WriteLine("DON'T DO IT, IT'S A TRAP");
+                            var type = "";
+                            if(account is CheckingAccount)
+                            {
+                                type = "Checking";
+                            }
+                            if(account is SavingsAccount)
+                            {
+                                type = "Savings";
+                            }
+
+
+                            Console.WriteLine("{0,10}{1,20}{2,25}",account.AccountNumber,type,account.Balance.ToString("C2"));
+
                         }
+
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
 
 
                         // if (yourAccount is CheckingAccount)
@@ -309,11 +358,31 @@ namespace BankTellerExercise
                         // //Console.WriteLine("FIX ME!!!!");
                         // Console.WriteLine($"Your account is a {yourAccount.GetType()}");
 
-                        Console.Clear();
+                        
                         break;
 
                     case 7:
-                        Console.WriteLine("Do you want to leave the bank?  (Y/N)");
+                        if (you.IsVIP)
+                        {
+                            for (int i = 0; i < 1000; i++)
+                            {
+                                Console.WriteLine($"CONGRATULATIONS {you.Name}!  YOU ARE A VIP!!");
+                            }
+                                                        
+                            Console.WriteLine();
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, you are not a VIP yet.");
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine();
+                        }
+                        break;
+
+                    case 8:
+                        Console.Write("Are you sure you want to leave the bank?  (Y/N)");
                         Console.WriteLine();
                         var quit = Console.ReadLine();
                         quit = quit.ToUpper();
