@@ -34,14 +34,6 @@ namespace BankTellerExercise
                 var newCheck = new CheckingAccount();
 
                 you.AddAccount(newCheck, name);
-
-                //yourAccount = new CheckingAccount
-                //{
-                //    AccountNumber = name
-                //};
-
-
-
             }
             else
             {
@@ -51,12 +43,6 @@ namespace BankTellerExercise
                 var newSave = new SavingsAccount();
 
                 you.AddAccount(newSave, name);
-                //yourAccount = new SavingsAccount()
-                //{
-                //    AccountNumber = name
-                //};
-
-
             }
             Console.Clear();
 
@@ -99,14 +85,8 @@ namespace BankTellerExercise
 
                                 break;
                             }
-
-
-
                         }
-
-
                         break;
-
 
                     case 2:
                         Console.Clear();
@@ -132,9 +112,7 @@ namespace BankTellerExercise
                                         Console.WriteLine();
                                         Console.ReadLine();
                                         Console.Clear();
-
                                     }
-
                                 }
                                 else if (you.Accounts[i] is CheckingAccount)
                                 {
@@ -147,42 +125,18 @@ namespace BankTellerExercise
                                         Console.ReadLine();
                                         Console.Clear();
                                     }
-
-
-
-
-
                                 }
-
-
                                 you.Accounts[i].Withdraw(withdraw);
-
-
-
-
                                 Console.Clear();
                                 break;
-
                             }
 
                             if (i == you.Accounts.Length - 1)
                             {
                                 Console.WriteLine("You do not have that account...");
                             }
-
-
                         }
-
-
-                        //Console.WriteLine("How much would you like to withdraw? ");
-                        //Console.WriteLine();
-                        //decimal withdraw = decimal.Parse(Console.ReadLine());
-                        //yourAccount.Withdraw(withdraw);
-                        //Console.WriteLine($"Your balance is ${yourAccount.Balance}");
-                        //Console.WriteLine();
-
                         break;
-
 
                     case 3:
 
@@ -198,10 +152,7 @@ namespace BankTellerExercise
                                 you.Accounts[i].Deposit(deposit);
                                 Console.WriteLine($"{deposit.ToString("C2")} has been deposited to {you.Accounts[i].AccountNumber}.");
                                 Console.ReadLine();
-                               
-
-
-                                Console.Clear();
+                                                               Console.Clear();
                                 break;
 
                             }
@@ -212,18 +163,7 @@ namespace BankTellerExercise
                                 Console.WriteLine();
                                 Console.WriteLine();
                             }
-
-
-
-
                         }
-
-                        //Console.WriteLine("How much would you like to deposit? ");
-                        //Console.WriteLine();
-                        //var deposit = decimal.Parse(Console.ReadLine());
-                        //yourAccount.Deposit(deposit);
-                        //Console.WriteLine($"Your balance is ${yourAccount.Balance}");
-                        //Console.WriteLine();
                         break;
 
 
@@ -285,48 +225,14 @@ namespace BankTellerExercise
 
                                                 break;
                                             }
-
-
-
-
-
-
                                         }
-
-
                                     }
 
                                     break;
                                 }
-
                             }
-
                         }
-                        
-                        
-
-
-
-
-
-
-
-
-                        //Console.Write("Who would you like to transfer to?: ");
-                        //string transfersName = Console.ReadLine();
-                        //Console.Write("How much?:  ");
-                        //var tranferNum = decimal.Parse(Console.ReadLine());
-                        //BankAccount transferAcct = new BankAccount
-                        //{
-                        //    AccountNumber = transfersName
-                        //};
-                        //yourAccount.Transfer(transferAcct, tranferNum);
-                        //Console.WriteLine($"{transfersName} was transferred {tranferNum}. Their account now holds ${transferAcct.Balance}");
-                        //Console.WriteLine($"Your balance is ${yourAccount.Balance}");
-
-
-                        //would need a dictionary to hold the different accounts you can transfer to 
-
+                                 
                         break;
 
                     case 5:
@@ -348,9 +254,6 @@ namespace BankTellerExercise
                             Console.WriteLine();
                             Console.ReadLine();
                             Console.Clear();
-
-
-
                         }
                         else
                         {
@@ -390,8 +293,6 @@ namespace BankTellerExercise
                             {
                                 type = "Savings";
                             }
-
-
                             Console.WriteLine("{0,10}{1,20}{2,25}",account.AccountNumber,type,account.Balance.ToString("C2"));
 
                         }
@@ -402,26 +303,6 @@ namespace BankTellerExercise
 
                         Console.ReadLine();
                         Console.Clear();
-                        // if (yourAccount is CheckingAccount)
-                        // {
-                        //     var newAccount = new SavingsAccount();
-                        //     yourAccount.Transfer(newAccount, yourAccount.Balance);
-                        //
-                        //     yourAccount = newAccount;
-                        // }
-                        // else
-                        // {
-                        //     var newAccount = new CheckingAccount();
-                        //     yourAccount.Transfer(newAccount, yourAccount.Balance);
-                        //
-                        //     yourAccount = newAccount;
-                        // }
-                        // //Console.WriteLine("FIX ME!!!!");
-                        // //Console.WriteLine("FIX ME!!!!");
-                        // //Console.WriteLine("FIX ME!!!!");
-                        // Console.WriteLine($"Your account is a {yourAccount.GetType()}");
-
-                        
                         break;
 
                     case 7:
@@ -469,19 +350,8 @@ namespace BankTellerExercise
                         {
                             break;
                         }
-
-
-
-
-
                 }
-
-
             }
-
-
-
-
         }
     }
 }
